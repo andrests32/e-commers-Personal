@@ -5,7 +5,7 @@ import MyAccount from "../MyAccount";
 import MyOrder from "../MyOrders";
 import MyOrders from "../MyOrders";
 import NotFound from "../NotFound";
-import SingIn from "../../SingIn";
+import SingIn from "../SingIn";
 import "./App.css";
 //Tenemos formas de enlazar nuestras rutas, una podría ser dentro de nuestras función App con los elementos y las rutas por cada elemento colocaré un ejemplo de cada uno pero usaré mi forma en una función separa con su propia sintaxis 
 
