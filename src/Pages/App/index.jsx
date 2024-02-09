@@ -6,6 +6,7 @@ import MyOrder from "../MyOrders";
 import MyOrders from "../MyOrders";
 import NotFound from "../NotFound";
 import SingIn from "../SingIn";
+import Navbar from "../components/Navbar";
 import "./App.css";
 //Tenemos formas de enlazar nuestras rutas, una podría ser dentro de nuestras función App con los elementos y las rutas por cada elemento colocaré un ejemplo de cada uno pero usaré mi forma en una función separa con su propia sintaxis.
 // PARA ESTE PROYECTO USAREMOS POR SEPARADO LA FUNCION CON SUS ELEMENTOS DE LA PAGINA PRINCIPAL..
@@ -39,6 +40,7 @@ function App() {
     <BrowserRouter>
       {/* Aqui llamamos a nuestra funcion que contiene las rutas de las otras pages conjuntamente con la pagina principal. */}
       <AppRoutes />
+      <Navbar />
     </BrowserRouter>
   );
 }
