@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 // Paso importante para poder hacer uso de Navlink antes debemos importar nuestra propiedad como esta nexada dentro de nuestro nuevo archivo.
 
+import { TiShoppingCart } from "react-icons/ti";
+
 const NavBar = () => {
   // Para poder activar y desactivar una clase debemos asignar la clase que deseamos tener en este caso seria (textDecoration: "underline") lo guardemos dentro de una variable para poder hacer una validacion luegon con un operador ternario. dejare un ejemplo de esta forma tambien se puede activar o desactivar clases
   //   EJEMPLO-.1 const activeStyle = {
@@ -8,12 +10,13 @@ const NavBar = () => {
   //   };
   ////////////////////////////////////////////////////////////////////..
   // EJEMPLO-.2  ===> Usamos una sintaxis mas directa y mas sintetizada en donde ya no llamamos a la propiedad (textDecoration) si no colocamos directamente al valor que deseamos de la propiedad..
-  const activeStyle = "underline underline-offset-4";
+  const activeStyle = "underline decoration-2 underline-offset-4 text-color9 " ;
+  
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light font-display">
+    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light font-display bg-color7 shadow-sm">
       <ul className="flex items-center gap-3">
-        <li className="font-semibold text-lg">
+        <li className="font-semibold text-lg hover:text-color9">
           <NavLink
             to="/"
             //Esta sintaxis va con el ejemplo 1
@@ -75,8 +78,10 @@ const NavBar = () => {
         </li>
       </ul>
 
-      <ul className="flex items-center gap-3">
-        <li className="text-black/60">andresterraza.at@gmail.com</li>
+      <ul className="flex items-center gap-3 px-2">
+        <li className="text-color5">
+          andresterraza.at@gmail.com
+        </li>
         <li>
           <NavLink
             to="/my-orders"
@@ -101,7 +106,10 @@ const NavBar = () => {
             Sing In
           </NavLink>
         </li>
-        <li>🛒 0</li>
+        <li className="flex items-center gap-1">
+                <TiShoppingCart className="size-5"/>
+          <span>0</span>
+        </li>
       </ul>
     </nav>
   );
