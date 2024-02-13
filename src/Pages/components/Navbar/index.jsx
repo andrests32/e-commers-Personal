@@ -79,7 +79,7 @@ const NavBar = () => {
       </ul>
 
       <ul className="flex items-center gap-3 px-2">
-        <li className="text-color5">
+        <li className="text-color5 underline">
           andresterraza.at@gmail.com
         </li>
         <li>
