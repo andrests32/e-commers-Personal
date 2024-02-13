@@ -1,5 +1,6 @@
 import { useRoutes, BrowserRouter } from "react-router-dom";
 //Para poder enlazar las rutas debemos ejecutar el comando (npm install react-router-dom). esto nos ayuda a poder indicar a nuestro home que va a tener a nuestras otras pages. Como dato importante nuestro useRoutes es un hook. (En resumen lo que hace este hook es lanzarnos a las otras páginas que estarán dentro del homen como por ejemplo My Account y así a la que demos click pero esto lo hace sin abrír una nueva pestaña del navegador).
+import { ShoppingCardContextProvider } from "../components/Context";
 import Home from "../Home";
 import MyAccount from "../MyAccount";
 import MyOrder from "../MyOrders";
@@ -37,11 +38,13 @@ function App() {
   // ]);
   return (
     // Aqui debemos especificar muy bien la propiedad que llamamos para enrutar las paginas.
-    <BrowserRouter>
-      {/* Aqui llamamos a nuestra funcion que contiene las rutas de las otras pages conjuntamente con la pagina principal. */}
-      <AppRoutes />
-      <Navbar />
-    </BrowserRouter>
+    <ShoppingCardContextProvider>
+      <BrowserRouter>
+        {/* Aqui llamamos a nuestra funcion que contiene las rutas de las otras pages conjuntamente con la pagina principal. */}
+        <AppRoutes />
+        <Navbar />
+      </BrowserRouter>
+    </ShoppingCardContextProvider>
   );
 }
 
