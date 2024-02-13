@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 // Paso importante para poder hacer uso de Navlink antes debemos importar nuestra propiedad como esta nexada dentro de nuestro nuevo archivo.
 
 import { TiShoppingCart } from "react-icons/ti";
+import { useContext } from "react";
+import { ShoppingCardContext } from "../Context";
 
 const NavBar = () => {
   // Para poder activar y desactivar una clase debemos asignar la clase que deseamos tener en este caso seria (textDecoration: "underline") lo guardemos dentro de una variable para poder hacer una validacion luegon con un operador ternario. dejare un ejemplo de esta forma tambien se puede activar o desactivar clases
@@ -10,6 +12,7 @@ const NavBar = () => {
   //   };
   ////////////////////////////////////////////////////////////////////..
   // EJEMPLO-.2  ===> Usamos una sintaxis mas directa y mas sintetizada en donde ya no llamamos a la propiedad (textDecoration) si no colocamos directamente al valor que deseamos de la propiedad..
+  const context = useContext(ShoppingCardContext)
   const activeStyle = "underline decoration-2 underline-offset-4 text-color9 " ;
   
 
@@ -108,7 +111,9 @@ const NavBar = () => {
         </li>
         <li className="flex items-center gap-1">
                 <TiShoppingCart className="size-5"/>
-          <span>0</span>
+          <span>
+            {context.count}
+          </span>
         </li>
       </ul>
     </nav>
