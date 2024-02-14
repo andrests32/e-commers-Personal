@@ -13,13 +13,13 @@ const NavBar = () => {
   ////////////////////////////////////////////////////////////////////..
   // EJEMPLO-.2  ===> Usamos una sintaxis mas directa y mas sintetizada en donde ya no llamamos a la propiedad (textDecoration) si no colocamos directamente al valor que deseamos de la propiedad..
   const context = useContext(ShoppingCardContext)
-  const activeStyle = "underline decoration-2 underline-offset-4 text-color9 " ;
+  const activeStyle = "underline decoration-2 underline-offset-4 text-color11 " ;
   
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light font-display bg-color7 shadow-sm">
+    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light font-display bg-color7">
       <ul className="flex items-center gap-3">
-        <li className="font-semibold text-lg hover:text-color9">
+        <li className="font-semibold text-lg hover:text-color11">
           <NavLink
             to="/"
             //Esta sintaxis va con el ejemplo 1
@@ -111,7 +111,9 @@ const NavBar = () => {
         </li>
         <li className="flex items-center gap-1">
                 <TiShoppingCart className="size-5"/>
-          <span>
+          {/* <span className="text-color11 fixed top-4 right-9 bg-color10 rounded-lg items-center"> */}
+          <span className="text-color11">
+
             {context.count}
           </span>
         </li>

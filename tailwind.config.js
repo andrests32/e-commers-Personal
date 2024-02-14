@@ -16,6 +16,7 @@ export default {
       color8: "#0f684b",
       color9: "#00a8c6",
       color10: "#f5f5f5",
+      color11: "#fa3419",
     },
 
     extend: {

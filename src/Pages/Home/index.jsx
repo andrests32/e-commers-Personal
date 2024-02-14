@@ -4,6 +4,7 @@ import Card from "../components/Card/card";
 import { Inputs } from "../components/Input/input";
 import { Titles } from "../components/TitleHome/title";
 import { API } from "../components/API/api";
+import { ProductDetail } from "../components/ProdcutDetail/index";
 
 function Home() {
   const [items, setItems] = useState(null); //Creamos una varieble que contiene un array que guarda dentro de nuestro (items, los productos de nuestra API), ahora nuestro (steItems, lo que hara es cambiar el estado de nuestra varible trayendo los datos y transformados en un JSON) que luego los consumiremos dentro de las etiquetas del HOME..
@@ -32,6 +33,7 @@ function Home() {
           return <Card key={item.id} data={item} />;
         })}
       </div>
+      <ProductDetail />
     </Layout>
   );
 }

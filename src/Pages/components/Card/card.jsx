@@ -17,7 +17,7 @@ const Card = (data) => {
           src={data.data.images[0]}
           alt={data.data.title}
         />
-        <div className="absolute backdrop-blur-md bg-color3 top-0 right-0 justify-center items-cente w-7 h-7 rounded-lg m-2 p-1.5 hover:shadow-md hover:backdrop-shadow-md hover:bg-color7 hover:text-color9 text-color6"
+        <div className="absolute backdrop-blur-md bg-color3 top-0 right-0 justify-center items-cente w-7 h-7 rounded-lg m-2 p-1.5 hover:shadow-md hover:backdrop-shadow-md hover:bg-color7 hover:text-color11 text-color6"
         onClick={() => context.setCount(context.count + 1)}>
           <TiPlus />
         </div>
