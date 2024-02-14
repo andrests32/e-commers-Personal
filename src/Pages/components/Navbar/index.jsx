@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
 // Paso importante para poder hacer uso de Navlink antes debemos importar nuestra propiedad como esta nexada dentro de nuestro nuevo archivo.
 
-import { TiShoppingCart } from "react-icons/ti";
+// import { TiShoppingCart } from "react-icons/ti";
 import { useContext } from "react";
 import { ShoppingCardContext } from "../Context";
+import { LiaShoppingBagSolid } from "react-icons/lia";
 
 const NavBar = () => {
   // Para poder activar y desactivar una clase debemos asignar la clase que deseamos tener en este caso seria (textDecoration: "underline") lo guardemos dentro de una variable para poder hacer una validacion luegon con un operador ternario. dejare un ejemplo de esta forma tambien se puede activar o desactivar clases
@@ -109,10 +110,10 @@ const NavBar = () => {
             Sing In
           </NavLink>
         </li>
-        <li className="flex items-center gap-1">
-                <TiShoppingCart className="size-5"/>
+        <li className="flex items-center">
+                <LiaShoppingBagSolid className="size-5"/>
           {/* <span className="text-color11 fixed top-4 right-9 bg-color10 rounded-lg items-center"> */}
-          <span className="text-color11">
+          <span className="text-color11 size-7">
 
             {context.count}
           </span>
