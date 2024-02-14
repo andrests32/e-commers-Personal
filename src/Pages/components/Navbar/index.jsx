@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 // import { TiShoppingCart } from "react-icons/ti";
 import { useContext } from "react";
 import { ShoppingCardContext } from "../Context";
-import { LiaShoppingBagSolid } from "react-icons/lia";
+// import { LiaShoppingBagSolid } from "react-icons/lia";
+import { FaShoppingBag } from "react-icons/fa";
 
 const NavBar = () => {
   // Para poder activar y desactivar una clase debemos asignar la clase que deseamos tener en este caso seria (textDecoration: "underline") lo guardemos dentro de una variable para poder hacer una validacion luegon con un operador ternario. dejare un ejemplo de esta forma tambien se puede activar o desactivar clases
@@ -111,7 +112,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li className="flex items-center">
-                <LiaShoppingBagSolid className="size-5"/>
+                <FaShoppingBag className="size-5 text-color9 shadow-md"/>
           {/* <span className="text-color11 fixed top-4 right-9 bg-color10 rounded-lg items-center"> */}
           <span className="text-color11 size-7">
 

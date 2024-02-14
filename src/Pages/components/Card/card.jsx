@@ -6,9 +6,14 @@ import { ShoppingCardContext } from "../Context";
 const Card = (data) => {
   const context = useContext(ShoppingCardContext)
 
+  const showProduct = (productDetail) => {
+    context.openProductDetail()
+    context.setProductToShow(productDetail)
+  }
+
   return (
     <div className=" bg-color10 shadow-md hover:bg-color7  cursor-pointer w-56 h-80 rounded-lg font-display hover:py-0.5"
-    onClick={() => context.openProductDetail()}>
+    onClick={() => showProduct(data.data)}>
       <figure className="relative mb-2 w-full h-4/5">
         <span className="absolute bottom-0 left-0 bg-color10 text-color6 rounded-lg text-xs m-2 px-3 py-0.5">
           {data.data.category.name}

@@ -8,6 +8,9 @@ export const ShoppingCardContextProvider = ({ children }) => {
   const [isProductDetailOpen, setIsProductDetailOPen] = useState(false);
   const openProductDetail = () => setIsProductDetailOPen(true);
   const closeProductDetail = () => setIsProductDetailOPen(false);
+  const [productToShow, setProductToShow] = useState({});
+  
+
 
   ShoppingCardContextProvider.propTypes = {
     children: PropTypes.node.isRequired
@@ -19,7 +22,9 @@ export const ShoppingCardContextProvider = ({ children }) => {
         setCount,
         isProductDetailOpen,
         openProductDetail,
-        closeProductDetail
+        closeProductDetail,
+        productToShow,
+        setProductToShow
       }}
     >
       {children}
