@@ -112,8 +112,9 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li className="flex items-center">
-                <FaShoppingBag className="size-5 text-color9 shadow-md"/>
-          {/* <span className="text-color11 fixed top-4 right-9 bg-color10 rounded-lg items-center"> */}
+                <FaShoppingBag className="size-5 text-color9 shadow-md cursor-pointer"
+                onClick={() => context.openProductCartBuy()} />
+          
           <span className="text-color11 size-7">
 
             {context.count}
