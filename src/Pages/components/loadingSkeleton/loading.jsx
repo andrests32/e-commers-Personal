@@ -1,18 +1,11 @@
-// import React from "react";
-// import { API } from "../API/api";
+// import { useContext } from 'react';
+// import { ShoppingCardContext } from '../Context';
+// import './Styke.css'
 
-// function Loading (itemName, initialValue) {
-//     const [item, setItem] = React.useState(initialValue);
-//     const [loading, setLoading] = React.useState(true);
-//     const [error, setError] = React.useState(false);
+// const LoadingSkeleton = () => {
+//   const context = useContext(ShoppingCardContext)
 
-//     React.useEffect(() => {
-//         setTimeout(() => {
-//             try {
-//                 const 
-//             } catch (error) {
-                
-//             }
-//         })
-//     })
-// }
+//   return <div className='spinner'></div>;
+// };
+
+// export default LoadingSkeleton;

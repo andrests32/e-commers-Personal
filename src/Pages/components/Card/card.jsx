@@ -1,7 +1,8 @@
 //Para esta parte del componente usare una forma distinta de exportacion de modulos demotrando que se puede hacer de varias formas.
 import { useContext } from "react";
 import { ShoppingCardContext } from "../Context";
-import { TiPlus } from "react-icons/ti";
+import { TiPlus} from "react-icons/ti";
+import { FaCheck } from "react-icons/fa";
 
 const Card = (data) => {
   const context = useContext(ShoppingCardContext);
@@ -18,7 +19,32 @@ const Card = (data) => {
     context.setCartProducts([...context.cartProducts, productDatas]);
     context.openProductCartBuy();
     context.closeProductDetail();
-    console.log("CART: ", context.cartProducts);
+    // console.log("CART: ", context.cartProducts);
+  };
+
+  const renderIcon = (id) => {
+    const isInCard =
+      context.cartProducts.filter((product) => product.id === id).length > 0;
+      
+
+    if (isInCard) {
+    
+      return (
+        <div className="absolute backdrop-blur-md bg-color6/70 top-0 right-0 justify-center items-cente w-7 h-7 rounded-lg m-2 p-1.5 text-color11"
+        onClick={(e) => e.stopPropagation()}>
+          <FaCheck></FaCheck>
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className="absolute backdrop-blur-md bg-color3 top-0 right-0 justify-center items-cente w-7 h-7 rounded-lg m-2 p-1.5 hover:shadow-md hover:backdrop-shadow-md hover:bg-color7 hover:text-color11 text-color6"
+          onClick={(event) => addProductsBuyCart(event, data.data)}
+        >
+          <TiPlus></TiPlus>
+        </div>
+      );
+    }
   };
 
   return (
@@ -35,12 +61,7 @@ const Card = (data) => {
           src={data.data.images[0]}
           alt={data.data.title}
         />
-        <div
-          className="absolute backdrop-blur-md bg-color3 top-0 right-0 justify-center items-cente w-7 h-7 rounded-lg m-2 p-1.5 hover:shadow-md hover:backdrop-shadow-md hover:bg-color7 hover:text-color11 text-color6"
-          onClick={(event) => addProductsBuyCart(event, data.data)}
-        >
-          <TiPlus></TiPlus>
-        </div>
+        {renderIcon(data.data.id)}
       </figure>
       <div className="flex justify-between">
         <div className="text-sm px-1.5 text-color6">{data.data.title}</div>

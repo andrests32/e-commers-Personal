@@ -113,7 +113,7 @@ const NavBar = () => {
         </li>
         <li className="flex items-center">
                 <FaShoppingBag className="size-5 text-color9 shadow-md cursor-pointer"
-                onClick={() => context.openProductCartBuy()} />
+                onClick={() => (context.openProductCartBuy(), context.closeProductDetail())} />
           
           <span className="text-color11 size-7">
 
