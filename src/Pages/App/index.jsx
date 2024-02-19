@@ -20,7 +20,7 @@ const AppRoutes = () => {
     { path: "/", element: <Home /> },
     { path: "/my-account", element: <MyAccount /> },
     { path: "/my-orders", element: <MyOrders /> },
-    { path: "/my-order", element: <MyOrder /> },
+    { path: "/my-order/last", element: <MyOrder /> },
     { path: "/sing-in", element: <SingIn /> },
     { path: "/*", element: <NotFound /> } //Para esta parte de la pagina de notfound debemos especificar con un aterisco para indicicar que es es cualquier otro ruta que no querramos que aparezca dentro del home principal. (Para resumir el not found lo manejamos para errores cuando no aparezca alguna pagina. )
   ]);
