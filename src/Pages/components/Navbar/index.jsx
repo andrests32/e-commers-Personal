@@ -1,7 +1,11 @@
 import { NavLink } from "react-router-dom";
 // Paso importante para poder hacer uso de Navlink antes debemos importar nuestra propiedad como esta nexada dentro de nuestro nuevo archivo.
 
-import { TiShoppingCart } from "react-icons/ti";
+// import { TiShoppingCart } from "react-icons/ti";
+import { useContext } from "react";
+import { ShoppingCardContext } from "../Context";
+// import { LiaShoppingBagSolid } from "react-icons/lia";
+import { FaShoppingBag } from "react-icons/fa";
 
 const NavBar = () => {
   // Para poder activar y desactivar una clase debemos asignar la clase que deseamos tener en este caso seria (textDecoration: "underline") lo guardemos dentro de una variable para poder hacer una validacion luegon con un operador ternario. dejare un ejemplo de esta forma tambien se puede activar o desactivar clases
@@ -10,13 +14,14 @@ const NavBar = () => {
   //   };
   ////////////////////////////////////////////////////////////////////..
   // EJEMPLO-.2  ===> Usamos una sintaxis mas directa y mas sintetizada en donde ya no llamamos a la propiedad (textDecoration) si no colocamos directamente al valor que deseamos de la propiedad..
-  const activeStyle = "underline decoration-2 underline-offset-4 text-color9 " ;
+  const context = useContext(ShoppingCardContext)
+  const activeStyle = "underline decoration-2 underline-offset-4 text-color11 " ;
   
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light font-display bg-color7 shadow-sm">
+    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light font-display bg-color7">
       <ul className="flex items-center gap-3">
-        <li className="font-semibold text-lg hover:text-color9">
+        <li className="font-semibold text-lg hover:text-color11">
           <NavLink
             to="/"
             //Esta sintaxis va con el ejemplo 1
@@ -79,7 +84,7 @@ const NavBar = () => {
       </ul>
 
       <ul className="flex items-center gap-3 px-2">
-        <li className="text-color5">
+        <li className="text-color5 underline">
           andresterraza.at@gmail.com
         </li>
         <li>
@@ -106,9 +111,14 @@ const NavBar = () => {
             Sing In
           </NavLink>
         </li>
-        <li className="flex items-center gap-1">
-                <TiShoppingCart className="size-5"/>
-          <span>0</span>
+        <li className="flex items-center">
+                <FaShoppingBag className="size-5 text-color9 shadow-md cursor-pointer"
+                onClick={() => (context.openProductCartBuy(), context.closeProductDetail())} />
+          
+          <span className="text-color11 size-7">
+
+            {context.count}
+          </span>
         </li>
       </ul>
     </nav>

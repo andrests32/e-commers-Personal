@@ -14,7 +14,9 @@ export default {
       color6: "#000000",
       color7: "#caff42",
       color8: "#0f684b",
-      color9: "#24c0eb"
+      color9: "#00a8c6",
+      color10: "#f5f5f5",
+      color11: "#fa3419",
     },
 
     extend: {

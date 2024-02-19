@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
     }
     
     return(
-        <div className="flex flex-col items-center mt-20 font-display">
+        <div className="flex flex-col items-center mt-20 font-display top-20">
             {children}
         </div>
     )
