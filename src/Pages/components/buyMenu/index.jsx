@@ -64,7 +64,7 @@ const ShowBuyCart = () => {
           </span>
         </p>
         <button
-          className="w-full bg-color7 py-3 rounded-lg mb-4 hover:shadow-md"
+          className="font-display w-full bg-color7 py-3 rounded-lg mb-4 hover:text-color11"
           onClick={() => handleCheckOut()}
         >
           CheckOut

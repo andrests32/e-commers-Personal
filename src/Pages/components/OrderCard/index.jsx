@@ -33,11 +33,12 @@ const OrderCard = (props) => {
             <p className="text-lg font-medium mr-14 font-display ml-1">${price}</p>
             <div className="flex items-center mr-10">
               <FaPlusSquare className="text-color9 hover:text-color11 mr-0.5 text-xl"/>
+              <p className="font-display">0</p>
              <FaMinusSquare className="text-color9 hover:text-color11 ml-0.5 text-xl"/>
             </div>
           </div>
           <div className="">
-            <IoMdTrash className="h-6 w-6 text-color9 hover:text-color11 cursor-pointer ml-10" 
+            <IoMdTrash className="h-6 w-6 text-color9 hover:text-color11 cursor-pointer ml-7" 
             onClick={() => handleDelete(id)}/>
           </div>
         </div>
