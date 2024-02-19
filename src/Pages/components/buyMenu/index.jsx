@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-routes-dom";
 import { IoClose } from "react-icons/io5";
 import { ShoppingCardContext } from "../Context";
 import OrderCard from "../OrderCard";
@@ -63,12 +64,14 @@ const ShowBuyCart = () => {
             ${totalPrice(context.cartProducts)}
           </span>
         </p>
+        <link to="/my-orders/last">
         <button
           className="font-display w-full bg-color7 py-3 rounded-lg mb-4 hover:text-color11"
           onClick={() => handleCheckOut()}
         >
           CheckOut
         </button>
+          </link>
       </div>
     </aside>
   );
