@@ -9,9 +9,23 @@ const ShowBuyCart = () => {
   const context = useContext(ShoppingCardContext);
 
   const handleDelete = (id) => {
-    const filertedProducts = context.cartProducts.filter(product => product.id != id)
-    context.setCartProducts(filertedProducts)
-  }
+    const filertedProducts = context.cartProducts.filter(
+      (product) => product.id != id
+    );
+    context.setCartProducts(filertedProducts);
+  };
+
+  const handleCheckOut = () => {
+    const orderToAdd = {
+      date: "01.02.24",
+      products: context.cartProducts,
+      tatalProducts: context.cartProducts.length,
+      totalPrice: totalPrice(context.cartProducts)
+    };
+
+    context.setOrder([...context.order, orderToAdd]);
+    context.setCartProducts([]);
+  };
 
   return (
     <aside
@@ -28,7 +42,7 @@ const ShowBuyCart = () => {
           />
         </div>
       </div>
-      <div className="px-2 overflow-y-scroll">
+      <div className="px-2 overflow-y-scroll flex-1">
         {context.cartProducts.map((product) => (
           <OrderCard
             key={product.id}
@@ -40,11 +54,21 @@ const ShowBuyCart = () => {
           />
         ))}
       </div>
-      <div className=" px-4 bg-color7 w-full h-10 font-display flex items-center">
-          <p>
-            <span className=" text-xl mr-10">Total</span>
-            <span className="text-color11 ml-40">$ {totalPrice(context.cartProducts)}</span>
-          </p>
+
+      <div className="px-7">
+        <p className="flex justify-between items-center mb-3 font-display">
+          <span className="text-color6 text-md ">Total</span>
+          <span></span>
+          <span className="text-color6 text-xl">
+            ${totalPrice(context.cartProducts)}
+          </span>
+        </p>
+        <button
+          className="w-full bg-color7 py-3 rounded-lg mb-4 hover:shadow-md"
+          onClick={() => handleCheckOut()}
+        >
+          CheckOut
+        </button>
       </div>
     </aside>
   );

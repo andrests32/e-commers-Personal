@@ -9,12 +9,15 @@ export const ShoppingCardContextProvider = ({ children }) => {
   const openProductDetail = () => setIsProductDetailOPen(true);
   const closeProductDetail = () => setIsProductDetailOPen(false);
   const [productToShow, setProductToShow] = useState({});
-  
+
   const [isOpenProductCartBuy, setOpenProductCartBuy] = useState(false);
   const openProductCartBuy = () => setOpenProductCartBuy(true);
-  const closeProductCartBuy = () => setOpenProductCartBuy(false)
+  const closeProductCartBuy = () => setOpenProductCartBuy(false);
+
+  const [cartProducts, setCartProducts] = useState([]);
+
+  const [order, setOrder] = useState([]);
   
-  const [cartProducts, setCartProducts] = useState([])
 
   ShoppingCardContextProvider.propTypes = {
     children: PropTypes.node.isRequired
@@ -34,6 +37,8 @@ export const ShoppingCardContextProvider = ({ children }) => {
         isOpenProductCartBuy,
         openProductCartBuy,
         closeProductCartBuy,
+        order,
+        setOrder,
       }}
     >
       {children}
