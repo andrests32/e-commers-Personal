@@ -9,7 +9,7 @@ const OrderCard = (props) => {
     title: PropTypes.node.isRequired,
     imageUrl: PropTypes.node.isRequired,
     price: PropTypes.node.isRequired,
-    // handleDelete: PropTypes.node.isRequired
+    handleDelete: PropTypes.node.isRequired
   };
   const { id, title, imageUrl, price, handleDelete } = props;
   let renderIoMdTrash;

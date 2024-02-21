@@ -7,18 +7,21 @@ import { Link } from "react-router-dom";
 
 function MyOrder() {
   const context = useContext(ShoppingCardContext);
-  const latestOrderProducts = context.order?.slice(-1)[0]?.products || [];
+  // const latestOrderProducts = context.order?[index].products
+  const currentPath = window.location.pathname;
+  let index = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+  if (index === 'last') index = context.order?.length -1
 
   return (
     <Layout>
       <div className="flex items-center justify-center relative w-80 mt-5 mb-5 bg-color10 rounded-md py-1">
         <Link to="/my-orders" className="absolute left-3">
-          <FiChevronsLeft className="text-3xl hover:text-color11"/>
+          <FiChevronsLeft className="text-3xl hover:text-color11" />
         </Link>
         <h1 className="text-xl ">My Order</h1>
       </div>
       <div className="px-2 overflow-y-scroll flex-1">
-        {latestOrderProducts.map((product) => (
+        {context.order?.[index]?.products.map((product) => (
           <OrderCard
             key={product.id}
             id={product.id}
