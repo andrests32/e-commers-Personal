@@ -26,6 +26,7 @@ const ShowBuyCart = () => {
 
     context.setOrder([...context.order, orderToAdd]);
     context.setCartProducts([]);
+    context.setSearchByTitle(null)
   };
 
   return (
@@ -59,7 +60,6 @@ const ShowBuyCart = () => {
       <div className="px-7">
         <p className="flex justify-between items-center mb-3 font-display">
           <span className="text-color6 text-md ">Total</span>
-          <span></span>
           <span className="text-color6 text-xl">
             ${totalPrice(context.cartProducts)}
           </span>
