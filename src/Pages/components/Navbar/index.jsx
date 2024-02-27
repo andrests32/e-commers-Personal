@@ -14,9 +14,69 @@ const NavBar = () => {
   //   };
   ////////////////////////////////////////////////////////////////////..
   // EJEMPLO-.2  ===> Usamos una sintaxis mas directa y mas sintetizada en donde ya no llamamos a la propiedad (textDecoration) si no colocamos directamente al valor que deseamos de la propiedad..
-  const context = useContext(ShoppingCardContext)
-  const activeStyle = "underline decoration-2 underline-offset-4 text-color11 " ;
-  
+  const context = useContext(ShoppingCardContext);
+  const activeStyle = "underline decoration-2 underline-offset-4 text-color11 ";
+
+  const singOut = localStorage.getItem("sing-out");
+  const parsedSingOut = JSON.parse(singOut);
+  const inUserSingOut = context.singOut || parsedSingOut;
+
+  const handlesSingOut = () => {
+    const stringifiedSingOut = JSON.stringify(true);
+    localStorage.setItem("sing-out", stringifiedSingOut);
+    context.setSingOut(true);
+  };
+
+  const renderView = () => {
+    if (inUserSingOut) {
+      return (
+        <li>
+          <NavLink
+            to="/sing-in"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => handlesSingOut()}
+          >
+            Sing Out
+          </NavLink>
+        </li>
+      );
+    } else {
+      return (
+        <>
+          <li className="text-color5 underline">andresterraza.at@gmail.com</li>
+          <li>
+            <NavLink
+              to="/my-orders"
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              My Orders
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/my-account"
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              My Account
+            </NavLink>
+          </li>
+          {/* ///////////////////////// */}
+          <li className="flex items-center">
+            <FaShoppingBag
+              className="size-5 text-color9 shadow-md cursor-pointer"
+              onClick={() => (
+                context.openProductCartBuy(), context.closeProductDetail()
+              )}
+            />
+
+            <span className="text-color11 size-7">
+              {context.cartProducts.length}
+            </span>
+          </li>
+        </>
+      );
+    }
+  };
 
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light font-display bg-color7">
@@ -36,9 +96,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/"
-            onClick={() => 
-              context.setSearchByCategory()
-            }
+            onClick={() => context.setSearchByCategory()}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             All
@@ -47,9 +105,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/clothes"
-            onClick={() => 
-              context.setSearchByCategory('clothes')
-            }
+            onClick={() => context.setSearchByCategory("clothes")}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Clothes
@@ -58,9 +114,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/electronics"
-            onClick={() => 
-              context.setSearchByCategory('electronics')
-            }
+            onClick={() => context.setSearchByCategory("electronics")}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Electronics
@@ -69,9 +123,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/furnitures"
-            onClick={() => 
-              context.setSearchByCategory('furnitures')
-            }
+            onClick={() => context.setSearchByCategory("furnitures")}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Furnitures
@@ -80,9 +132,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/toys"
-            onClick={() => 
-              context.setSearchByCategory('toys')
-            }
+            onClick={() => context.setSearchByCategory("toys")}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Toys
@@ -91,9 +141,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/others"
-            onClick={() => 
-              context.setSearchByCategory('others')
-            }
+            onClick={() => context.setSearchByCategory("others")}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Others
@@ -101,44 +149,7 @@ const NavBar = () => {
         </li>
       </ul>
 
-      <ul className="flex items-center gap-3 px-2">
-        <li className="text-color5 underline">
-          andresterraza.at@gmail.com
-        </li>
-        <li>
-          <NavLink
-            to="/my-orders"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            My Orders
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/my-account"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            My Account
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/sing-in"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Sing In
-          </NavLink>
-        </li>
-        <li className="flex items-center">
-                <FaShoppingBag className="size-5 text-color9 shadow-md cursor-pointer"
-                onClick={() => (context.openProductCartBuy(), context.closeProductDetail())} />
-          
-          <span className="text-color11 size-7">
-
-            {context.cartProducts.length}
-          </span>
-        </li>
-      </ul>
+      <ul className="flex items-center gap-3 px-2">{renderView()}</ul>
     </nav>
   );
 };

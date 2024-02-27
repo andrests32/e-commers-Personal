@@ -2,10 +2,34 @@ import { createContext, useState } from "react";
 import { useEffect } from "react";
 import { API } from "../API/api";
 import { PropTypes } from "prop-types";
+// import { parse } from "postcss";
 
 export const ShoppingCardContext = createContext();
 
+export const initialLocalStorage = () => {
+  const accountInLocalStorage = localStorage.getItem('account')
+  const SinOutInLocalStorage = localStorage.getItem('sing-out')
+  let parsedAccount
+  let parsedSingOut
+
+  if (!accountInLocalStorage) {
+    localStorage.setItem('account', JSON.stringify({}))
+    parsedAccount = {}
+  }else {
+    parsedSingOut = JSON.parse(accountInLocalStorage)
+  }
+
+  if (!SinOutInLocalStorage) {
+    localStorage.setItem('sing-out', JSON.stringify(false))
+    parsedSingOut = false
+  }else {
+    parsedSingOut = JSON.parse(SinOutInLocalStorage)
+  }
+}
+
 export const ShoppingCardContextProvider = ({ children }) => {
+  const [account, setAccount] = useState({})
+  const [singOut,  setSingOut] = useState(false)
   const [count, setCount] = useState(0);
   const [isProductDetailOpen, setIsProductDetailOPen] = useState(false);
   const openProductDetail = () => setIsProductDetailOPen(true);
@@ -127,7 +151,11 @@ export const ShoppingCardContextProvider = ({ children }) => {
         setSearchByTitle,
         filteredItems,
         searchByCategory,
-        setSearchByCategory
+        setSearchByCategory,
+        account,
+        setAccount,
+        singOut,
+        setSingOut
       }}
     >
       {children}
