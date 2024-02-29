@@ -7,29 +7,29 @@ import { PropTypes } from "prop-types";
 export const ShoppingCardContext = createContext();
 
 export const initialLocalStorage = () => {
-  const accountInLocalStorage = localStorage.getItem('account')
-  const SinOutInLocalStorage = localStorage.getItem('sing-out')
-  let parsedAccount
-  let parsedSingOut
+  const accountInLocalStorage = localStorage.getItem("account");
+  const signOutInLocalStorage = localStorage.getItem("sign-out");
+  let parsedAccount;
+  let parsedSignOut;
 
   if (!accountInLocalStorage) {
-    localStorage.setItem('account', JSON.stringify({}))
-    parsedAccount = {}
-  }else {
-    parsedSingOut = JSON.parse(accountInLocalStorage)
+    localStorage.setItem("account", JSON.stringify({}));
+    parsedAccount = {};
+  } else {
+    parsedAccount = JSON.parse(accountInLocalStorage);
   }
 
-  if (!SinOutInLocalStorage) {
-    localStorage.setItem('sing-out', JSON.stringify(false))
-    parsedSingOut = false
-  }else {
-    parsedSingOut = JSON.parse(SinOutInLocalStorage)
+  if (!signOutInLocalStorage) {
+    localStorage.setItem("sign-out", JSON.stringify(false));
+    parsedSignOut = false;
+  } else {
+    parsedSignOut = JSON.parse(signOutInLocalStorage);
   }
-}
+};
 
 export const ShoppingCardContextProvider = ({ children }) => {
-  const [account, setAccount] = useState({})
-  const [singOut,  setSingOut] = useState(false)
+  const [account, setAccount] = useState({});
+  const [signOut, setSignOut] = useState(false);
   const [count, setCount] = useState(0);
   const [isProductDetailOpen, setIsProductDetailOPen] = useState(false);
   const openProductDetail = () => setIsProductDetailOPen(true);
@@ -80,15 +80,15 @@ export const ShoppingCardContextProvider = ({ children }) => {
   };
 
   const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
-    if (searchType === 'BY_TITLE') {
+    if (searchType === "BY_TITLE") {
       return filteredItemsByTitle(items, searchByTitle);
     }
 
-    if (searchType === 'BY_CATEGORY') {
+    if (searchType === "BY_CATEGORY") {
       return filteredItemsByCategory(items, searchByCategory);
     }
 
-    if (searchType === 'BY_TITLE_AND_CATEGORY') {
+    if (searchType === "BY_TITLE_AND_CATEGORY") {
       return filteredItemsByCategory(items, searchByCategory).filter((item) =>
         item.title.toLowerCase().includes(searchByCategory.toLowerCase())
       );
@@ -97,13 +97,13 @@ export const ShoppingCardContextProvider = ({ children }) => {
     if (!searchType) {
       return items;
     }
-  }
+  };
 
   useEffect(() => {
     if (searchByTitle && searchByCategory)
       setFilteredItems(
         filterBy(
-          'BY_TITLE_AND_CATEGORY',
+          "BY_TITLE_AND_CATEGORY",
           items,
           searchByTitle,
           searchByCategory
@@ -111,11 +111,11 @@ export const ShoppingCardContextProvider = ({ children }) => {
       );
     if (searchByTitle && !searchByCategory)
       setFilteredItems(
-        filterBy('BY_TITLE', items, searchByTitle, searchByCategory)
+        filterBy("BY_TITLE", items, searchByTitle, searchByCategory)
       );
     if (!searchByTitle && searchByCategory)
       setFilteredItems(
-        filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory)
+        filterBy("BY_CATEGORY", items, searchByTitle, searchByCategory)
       );
     if (!searchByTitle && !searchByCategory)
       setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory));
@@ -154,8 +154,8 @@ export const ShoppingCardContextProvider = ({ children }) => {
         setSearchByCategory,
         account,
         setAccount,
-        singOut,
-        setSingOut
+        signOut,
+        setSignOut
       }}
     >
       {children}

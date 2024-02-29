@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "../components/layout";
 
-function SingIn() {
+function SignIn() {
   return (
     <Layout>
       <div className="border border-color6  mt-20 rounded-lg px-4 py-4">
@@ -36,4 +36,4 @@ function SingIn() {
   );
 }
 
-export default SingIn;
+export default SignIn;

@@ -17,18 +17,18 @@ const NavBar = () => {
   const context = useContext(ShoppingCardContext);
   const activeStyle = "underline decoration-2 underline-offset-4 text-color11 ";
 
-  const singOut = localStorage.getItem("sing-out");
-  const parsedSingOut = JSON.parse(singOut);
-  const inUserSingOut = context.singOut || parsedSingOut;
+  const signOut = localStorage.getItem("sign-out");
+  const parsedSignOut = JSON.parse(signOut);
+  const isUserSignOut = context.signOut || parsedSignOut;
 
   const handlesSingOut = () => {
     const stringifiedSingOut = JSON.stringify(true);
-    localStorage.setItem("sing-out", stringifiedSingOut);
-    context.setSingOut(true);
+    localStorage.setItem("sign-out", stringifiedSingOut);
+    context.setSignOut(true);
   };
 
   const renderView = () => {
-    if (inUserSingOut) {
+    if (isUserSignOut) {
       return (
         <li>
           <NavLink
@@ -36,7 +36,7 @@ const NavBar = () => {
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={() => handlesSingOut()}
           >
-            Sing Out
+            Sign Out
           </NavLink>
         </li>
       );
@@ -60,18 +60,14 @@ const NavBar = () => {
               My Account
             </NavLink>
           </li>
-          {/* ///////////////////////// */}
-          <li className="flex items-center">
-            <FaShoppingBag
-              className="size-5 text-color9 shadow-md cursor-pointer"
-              onClick={() => (
-                context.openProductCartBuy(), context.closeProductDetail()
-              )}
-            />
-
-            <span className="text-color11 size-7">
-              {context.cartProducts.length}
-            </span>
+          <li>
+            <NavLink
+              to="/sing-in"
+              className={({ isActive }) => (isActive ? activeStyle : undefined)}
+              onClick={() => handlesSingOut()}
+            >
+              Sign Out
+            </NavLink>
           </li>
         </>
       );
@@ -149,7 +145,21 @@ const NavBar = () => {
         </li>
       </ul>
 
-      <ul className="flex items-center gap-3 px-2">{renderView()}</ul>
+      <ul className="flex items-center gap-3 px-2">
+        {renderView()}
+        <li className="flex items-center">
+          <FaShoppingBag
+            className="size-5 text-color9 cursor-pointer"
+            onClick={() => (
+              context.openProductCartBuy(), context.closeProductDetail()
+            )}
+          />
+
+          <div className="text-color11 size-7">
+            {context.cartProducts.length}
+          </div>
+        </li>
+      </ul>
     </nav>
   );
 };
