@@ -1,6 +1,12 @@
 import { useRoutes, BrowserRouter } from "react-router-dom";
+import { useContext } from "react";
 //Para poder enlazar las rutas debemos ejecutar el comando (npm install react-router-dom). esto nos ayuda a poder indicar a nuestro home que va a tener a nuestras otras pages. Como dato importante nuestro useRoutes es un hook. (En resumen lo que hace este hook es lanzarnos a las otras páginas que estarán dentro del homen como por ejemplo My Account y así a la que demos click pero esto lo hace sin abrír una nueva pestaña del navegador).
-import { ShoppingCardContextProvider } from "../components/Context";
+import {
+  ShoppingCardContextProvider,
+  initialLocalStorage,
+  ShoppingCardContext
+} from "../components/Context";
+import { Navigate } from "react-router-dom";
 import Home from "../Home";
 import MyAccount from "../MyAccount";
 import MyOrder from "../MyOrder";
@@ -16,13 +22,75 @@ import "./App.css";
 // Para ser mas especificos con las rutas y poderlas retornar debemos hacer uso de una nueva propiedad llamada (BrowserRouter) esto nos sirve para poder llamar a nuestras funciones que estan fuera del componente principal que renderiza todo.
 
 const AppRoutes = () => {
+  const context = useContext(ShoppingCardContext);
+  const account = localStorage.getItem("account");
+  const parsedAccount = JSON.parse(account);
+
+  const signOut = localStorage.getItem("sing-out");
+  const parsedSignOut = JSON.parse(signOut);
+
+  const noAccountInLocalStorage = parsedAccount
+    ? Object.keys(parsedAccount).length === 0
+    : true;
+  const noAccountInLocalState = Object.keys(context.account).length === 0;
+  const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
+  const isUserSignOut = context.signOut || parsedSignOut;
+
   let routes = useRoutes([
-    { path: "/", element: <Home /> },
-    { path: "/clothes", element: <Home /> },
-    { path: "/electronics", element: <Home /> },
-    { path: "/furnitures", element: <Home /> },
-    { path: "/toys", element: <Home /> },
-    { path: "/others", element: <Home /> },
+    {
+      path: "/",
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <Home />
+        ) : (
+          <Navigate to={"sing-in"} />
+        )
+    },
+    {
+      path: "/clothes",
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <Home />
+        ) : (
+          <Navigate to={"sing-in"} />
+        )
+    },
+    {
+      path: "/electronics",
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <Home />
+        ) : (
+          <Navigate to={"sing-in"} />
+        )
+    },
+    {
+      path: "/furnitures",
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <Home />
+        ) : (
+          <Navigate to={"sing-in"} />
+        )
+    },
+    {
+      path: "/toys",
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <Home />
+        ) : (
+          <Navigate to={"sing-in"} />
+        )
+    },
+    {
+      path: "/others",
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <Home />
+        ) : (
+          <Navigate to={"sing-in"} />
+        )
+    },
     { path: "/my-account", element: <MyAccount /> },
     { path: "/my-order", element: <MyOrder /> },
     { path: "/my-orders", element: <MyOrders /> },
@@ -35,6 +103,7 @@ const AppRoutes = () => {
 };
 
 function App() {
+  initialLocalStorage();
   //Creamos una variable que guarda nuestra ruta el nombre de la variable es al azar pero lo importante es colocar nombres que sean similares para entender código, ahora dentro de la variable creamos un array qué tendrá objetos los cuales serán nuestras rutas. Entonces indicaremos la ruta y cual es el elemento.
   // let routes = useRoutes([
   //   {

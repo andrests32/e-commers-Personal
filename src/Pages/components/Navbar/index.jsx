@@ -21,6 +21,17 @@ const NavBar = () => {
   const parsedSignOut = JSON.parse(signOut);
   const isUserSignOut = context.signOut || parsedSignOut;
 
+  const account = localStorage.getItem("account");
+  const parsedAccount = JSON.parse(account);
+
+  const noAccountInLocalStorage = parsedAccount
+    ? Object.keys(parsedAccount).length === 0
+    : true;
+  const noAccountInLocalState = context.account
+    ? Object.keys(context.account).length === 0
+    : true;
+  const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
+
   const handlesSingOut = () => {
     const stringifiedSingOut = JSON.stringify(true);
     localStorage.setItem("sign-out", stringifiedSingOut);
@@ -28,22 +39,10 @@ const NavBar = () => {
   };
 
   const renderView = () => {
-    if (isUserSignOut) {
-      return (
-        <li>
-          <NavLink
-            to="/sing-in"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => handlesSingOut()}
-          >
-            Sign Out
-          </NavLink>
-        </li>
-      );
-    } else {
+    if (hasUserAnAccount && !isUserSignOut) {
       return (
         <>
-          <li className="text-color5 underline">andresterraza.at@gmail.com</li>
+          <li className="text-color5 underline">{parsedAccount?.email}</li>
           <li>
             <NavLink
               to="/my-orders"
@@ -71,6 +70,18 @@ const NavBar = () => {
           </li>
         </>
       );
+    } else {
+      return (
+        <li>
+          <NavLink
+            to="/sing-in"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => handlesSingOut()}
+          >
+            Sign In
+          </NavLink>
+        </li>
+      );
     }
   };
 
@@ -79,7 +90,7 @@ const NavBar = () => {
       <ul className="flex items-center gap-3">
         <li className="font-semibold text-lg hover:text-color11">
           <NavLink
-            to="/"
+            to={`${isUserSignOut ? "/sing-in" : "/"}`}
             //Esta sintaxis va con el ejemplo 1
             // EJEMPLO-.1 style={({ isActive }) => (isActive ? activeStyle : undefined)}
             /////////////////////////////////////////////////////////////......
