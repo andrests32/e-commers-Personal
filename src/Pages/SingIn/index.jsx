@@ -45,11 +45,11 @@ function SignIn() {
         <div>
           <p className="mb-3">
             <span className="font-light text-sm">Email: </span>
-            <span className="text-sm">{parsedAccount?.emamil}</span>
+            <span className="text-sm text-color6/30">{parsedAccount?.email}</span>
           </p>
           <p>
-            <span className="font-light text-sm">Contraseña: </span>
-            <span className="text-sm">{hasUserAnAccount?.password}</span>
+            <span className="font-light text-sm">password: </span>
+            <span className="text-sm text-color6/30">{parsedAccount?.password}</span>
           </p>
           <Link to="/">
             <button

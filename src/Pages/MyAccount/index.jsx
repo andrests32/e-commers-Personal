@@ -46,49 +46,58 @@ function MyAccount() {
   };
 
   const renderEdtiUserInfo = () => {
-    <form ref={form} className="flex flex-col gap-4 w-80">
-      <div className="flex flex-col gap-1">
-        <label htmlFor="name" className="text-sm">
-          Nombres:
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          defaultValue={parsedAccount.name}
-          placeholder="Andres"
-          className="rounded-lg border boreder-color6 placeholder:text-sm-color6/20 focus:outline-none py-2 px-4"
-        />
-      </div>
+    return (
+      <form ref={form} className="flex flex-col gap-4 w-80">
+        <div className="flex flex-col gap-1">
+          <label htmlFor="name" className="text-sm">
+            Nombres:
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            defaultValue={parsedAccount.name}
+            placeholder="Andres"
+            className="rounded-lg border boreder-color6 placeholder:text-sm-color6/20 focus:outline-none py-2 px-4"
+          />
+        </div>
 
-      <div className="flex flex-col gap-1">
-        <label htmlFor="andresterraza.at@gmail.com" className="text-sm">
-          Email:
-        </label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          defaultValue={parsedAccount.email}
-          placeholder="andresterraza.at@gmail.com"
-          className="rounded-lg border boreder-color6 placeholder:text-sm-color6/20 focus:outline-none py-2 px-4"
-        />
-      </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="andresterraza.at@gmail.com" className="text-sm">
+            Email:
+          </label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            defaultValue={parsedAccount.email}
+            placeholder="andresterraza.at@gmail.com"
+            className="rounded-lg border boreder-color6 placeholder:text-sm-color6/20 focus:outline-none py-2 px-4"
+          />
+        </div>
 
-      <div className="flex flex-col gap-1">
-        <label htmlFor="password" className="text-sm">
-          password:
-        </label>
-        <input
-          type="text"
-          id="password"
-          name="password"
-          defaultValue={parsedAccount.password}
-          placeholder="******"
-          className="rounded-lg border boreder-color6 placeholder:text-sm-color6/20 focus:outline-none py-2 px-4"
-        />
-      </div>
-    </form>;
+        <div className="flex flex-col gap-1">
+          <label htmlFor="password" className="text-sm">
+            password:
+          </label>
+          <input
+            type="text"
+            id="password"
+            name="password"
+            defaultValue={parsedAccount.password}
+            placeholder="******"
+            className="rounded-lg border boreder-color6 placeholder:text-sm-color6/20 focus:outline-none py-2 px-4"
+          />
+        </div>
+
+        <button
+          className="bg-color7 rounded-lg mt-6 py-3"
+          onClick={() => editAccount()}
+        >
+          Editar
+        </button>
+      </form>
+    );
   };
 
   const renderView = () =>
